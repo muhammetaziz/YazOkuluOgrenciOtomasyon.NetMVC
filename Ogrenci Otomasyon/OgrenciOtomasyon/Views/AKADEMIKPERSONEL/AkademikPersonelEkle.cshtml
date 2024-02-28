@@ -1,0 +1,38 @@
+﻿
+@model EntityLayer.Concrete.AKADEMIKPERSONEL
+@{
+    ViewBag.Title = "AkademikPersonelEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+@using (Html.BeginForm("AkademikPersonelEkle", "AKADEMIKPERSONEL", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
+        @Html.Label("SICIL NO")
+        @Html.TextBoxFor(x => x.SICILNO, new { @class = "form-control", required = "required" })
+        <br />
+        @Html.Label("Adı")
+        @Html.TextBoxFor(x => x.ADI, new { @class = "form-control", required = "required" })
+        <br />
+        @Html.Label("Soyadı")
+        @Html.TextBoxFor(x => x.SOYADI, new { @class = "form-control", required = "required" })
+        <br />
+        @Html.Label("Ünvan")
+        @Html.TextBoxFor(x => x.UNVAN, new { @class = "form-control", required = "required" })
+        <br />
+       
+        <br />
+        @Html.Label("Bölüm")
+        @Html.DropDownListFor(x => x.BOLUMID, (List<SelectListItem>)ViewBag.values1, new { @class = "form-control" })
+        <br />
+       
+
+
+
+
+        <button class="btn btn-info">Kaydet</button>
+    </form>
+}

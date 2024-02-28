@@ -1,0 +1,87 @@
+﻿@model IEnumerable<EntityLayer.Concrete.DERTHAREKETDETAILS>
+
+
+@{
+    ViewBag.Title = "BekleyenYazOkuluDersOnayla";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- /.card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DataTable with default features</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>Adı</th>
+                                    <th>Kredi</th>
+                                    <th>AKTS</th>
+                                    <th>Öğrenci Adı</th>
+                                    <th>Öğrenci no</th>
+                                    <th>Durum</th>
+                                    <th>Onayla</th>
+                                    @*<th>Sil</th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.DERSs.ADI</td>
+                                        <td>@item.DERSs.KREDI</td>
+                                        <td>@item.DERSs.AKTS</td>
+                                        <td>@item.DERSHAREKETs.Ogrencis.ADI @item.DERSHAREKETs.Ogrencis.SOYADI</td>
+                                        <td>@item.DERSHAREKETs.Ogrencis.OGRENCINO </td>
+                                        @if (item.STATE == 0)
+                                        {
+                                            <td>Onay Bekliyor</td>
+                                            <td><a href="/DERSHAREKET/DersOnayla/@item.ID" class="btn btn-success">Onay</a></td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>Onaylandı</td>
+                                            <td></td>
+                                        }
+                                        @*<td>@Html.ActionLink("Sil", "DeleteDers", new { ID = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')" })</td>*@
+
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Adı</th>
+                                    <th>Kredi</th>
+                                    <th>AKTS</th>
+                                    <th>Öğrenci Adı</th>
+                                    <th>Öğrenci no</th>
+                                    <th>Durum</th>
+                                    <th>Onayla</th>
+                                    @* <th>Sil</th>*@
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+
+    <!-- /.container-fluid -->
+</section>

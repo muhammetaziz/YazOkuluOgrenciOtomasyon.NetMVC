@@ -1,0 +1,143 @@
+﻿@model IEnumerable<EntityLayer.Concrete.DERSHAREKET>
+
+
+@{
+    ViewBag.Title = "OnayBekleyenYazOkulu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- /.card -->
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">DataTable with default features</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Eklenme Tarihi</th>
+
+                                        <th>ÖĞRENCİ</th>
+                                        <th>DANIŞMAN</th>
+                                        <th>DURUM</th>
+                                        <th>Üniversite</th>
+                                        <th>Onayla</th>
+
+                                        <th>Detay Gör</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>@item.INSERT_DATE.ToShortDateString()</td>
+                                        <td>@item.Ogrencis.ADI @item.Ogrencis.SOYADI</td>
+                                        <td>@ViewBag.value1</td>
+                                        @if (item.STATE == 0)
+                                        {
+                                            <td>Danışman Onayı Bekleniyor</td>
+
+                                        }
+                                        @if (item.STATE == 2)
+                                        {
+                                            <td>Komisyon Onayı Bekleniyor</td>
+
+                                        }
+                                        @if (item.STATE == 4)
+                                        {
+                                            <td>Onaylandı</td>
+                                        }
+                                        @if (item.STATE == 3)
+                                        {
+                                            <td>Ders Onayı bekleniyor</td>
+                                        }
+                                        @if (!string.IsNullOrEmpty(item.UNIVERSITEADI))
+                                        {
+                                            <td>@item.UNIVERSITEADI</td>
+                                        }
+                                        else
+                                        {
+
+                                            <td>Üniversite seçilmedi</td>
+                                        }
+                                        @if (item.STATE == 0 && (ViewBag.UserRole == "AKADEMIKPERSONEL"|| ViewBag.UserRole == "KOMISYON"))
+                                                    {
+                                            <td><a href="/DERSHAREKET/DanismanOnay/@item.ID" class="btn btn-danger">Danışman Onayı</a></td>
+                                        }
+                                        else if (item.STATE == 2 && ViewBag.UserRole == "KOMISYON")
+                                        {
+                                            <td><a href="/DERSHAREKET/KomisyonOnay/@item.ID" class="btn btn-danger">Komisyon Onayı</a></td>
+
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+
+                                        <td><a href="/DERSHAREKET/GetDersHareketDetailsByAkademisyen/@item.ID" class="btn btn-danger">Detay Gör</a></td>
+
+
+                                    </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Eklenme Tarihi</th>
+                                        <th>ÖĞRENCİ</th>
+                                        <th>DANIŞMAN</th>
+                                        <th>DURUM</th>
+                                        <th>Üniversite</th>
+                                        <th>Onayla</th>
+                                        <th>Detay Gör</th>
+
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+
+        <!-- /.container-fluid -->
+    </section>
+
+    @*<a href="/DERSHAREKET/AddDersHareket/" class="btn btn-primary">Kendi Üniversitende Yaz Okulu Başvurusu Yap</a>
+    <a href="/DERSHAREKET/AddDersHareketAnotherUnivers/" class="btn btn-primary">Diğer Üniversitelerde Yaz Okulu Başvurusu Yap</a>*@
+
+
+    @*<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+            Yeni Üniversite Ekle
+        </button>
+        <div class="modal" id="Modal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Yeni Üniversite Ekleme Paneli</h2>
+                    </div>
+                    <form method="post" action="/DEF_TABLE_CRUD/UniversiteEkle/">
+                        <div class="modal-body">
+                            <label> Adı</label>
+                            <input type="text" name="ADI" class="form-control" />
+                            <br />
+
+                            <button class="btn btn-primary">Kaydet</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>*@

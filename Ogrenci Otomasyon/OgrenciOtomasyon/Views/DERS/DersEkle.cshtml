@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.DERS
+@{
+    ViewBag.Title = "DersEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("DersEkle", "DERS", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
+        @Html.Label("Adı")
+        @Html.TextBoxFor(x => x.ADI, new { @class = "form-control", required = "required" })
+        <br />
+        @Html.Label("Kredi")
+        @Html.TextBoxFor(x => x.KREDI, new { @class = "form-control", required = "required" })
+        <br />
+        @Html.Label("AKTS")
+        @Html.TextBoxFor(x => x.AKTS, new { @class = "form-control", required = "required" })
+        <br />
+      
+       
+        @Html.Label("Dersi Veren Akademisyen")
+        @Html.DropDownListFor(x => x.AKADEMIKPERSONELID, (List<SelectListItem>)ViewBag.values1, new { @class = "form-control" })
+        <br />
+        @Html.Label("Fakulte")
+        @Html.DropDownListFor(x => x.FAKULTEID, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bölüm")
+        @Html.DropDownListFor(x => x.BOLUMID, (List<SelectListItem>)ViewBag.values3, new { @class = "form-control" })
+       
+        <br />
+
+
+
+
+        <button class="btn btn-info">Kaydet</button>
+    </form>
+}

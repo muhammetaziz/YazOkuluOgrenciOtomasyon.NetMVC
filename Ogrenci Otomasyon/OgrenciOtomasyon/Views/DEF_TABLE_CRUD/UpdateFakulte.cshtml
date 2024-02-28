@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.FAKULTE
+
+
+
+@{
+    ViewBag.Title = "UpdateFakulte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("UpdateFakulte", "DEF_TABLE_CRUD", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
+        <input type="hidden" class="form-control" name="UserId" value="@Model.ID" />
+
+        @Html.Label("Adı")
+        @Html.TextBoxFor(x => x.ADI, new { @class = "form-control", required = "required" })
+        <br />
+
+
+
+        <button class="btn btn-info">Kaydet</button>
+    </form>
+}

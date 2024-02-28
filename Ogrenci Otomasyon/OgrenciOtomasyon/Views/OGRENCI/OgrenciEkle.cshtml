@@ -1,0 +1,42 @@
+﻿@model EntityLayer.Concrete.Ogrenci
+@{
+    ViewBag.Title = "OgrenciEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("OgrenciEkle", "OGRENCI", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
+        @Html.Label("Adı")
+        @Html.TextBoxFor(x => x.ADI, new { @class = "form-control", required = "required" })
+        <br />
+        @Html.Label("Soyadı")
+        @Html.TextBoxFor(x => x.SOYADI, new { @class = "form-control", required = "required" })
+        <br />
+        @Html.Label("TC NO")
+        @Html.TextBoxFor(x => x.TCNO, new { @class = "form-control", required = "required" })
+        <br />
+        @Html.Label("Öğrenci NO")
+        @Html.TextBoxFor(x => x.OGRENCINO, new { @class = "form-control", required = "required" })
+        <br />
+        @Html.Label("Üniversite")
+        @Html.DropDownListFor(x => x.UNIVERSITEID, (List<SelectListItem>)ViewBag.values1, new { @class = "form-control" })
+        <br />
+        @Html.Label("Fakulte")
+        @Html.DropDownListFor(x => x.FAKULTEID, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bölüm")
+        @Html.DropDownListFor(x => x.BOLUMID, (List<SelectListItem>)ViewBag.values3, new { @class = "form-control" })
+        <br />
+        @Html.Label("Danışman")
+        @Html.DropDownListFor(x => x.DANISMANID, (List<SelectListItem>)ViewBag.values4, new { @class = "form-control" })
+        <br />
+
+
+
+
+        <button class="btn btn-info">Kaydet</button>
+    </form>
+}

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Ogrenci>
+@{
+    ViewBag.Title = "OgrenciList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- /.card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DataTable with default features</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Ogrenci No</th>
+                                    <th>TC No</th>
+                                    <th>Adı</th>
+                                    <th>Soyadı</th>
+                                    <th>Üniversite</th>
+                                    <th>Fakülte</th>
+                                    <th>Bölüm</th>
+                                    <th>Guncelle</th>
+                                    <th>Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.OGRENCINO</td>
+                                        <td>@item.TCNO</td>
+                                        <td>@item.ADI</td>
+                                        <td>@item.SOYADI</td>
+                                        <td>@item.UNIVERSITEs.ADI</td>
+                                        <td>@item.FAKULTEs.ADI</td>
+                                        <td>@item.BOLUMs.ADI</td>
+                                        <td>@Html.ActionLink("Sil", "DeleteOgrenci", new { ID = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')" })</td>
+                                        <td><a href="/OGRENCI/UpdateOgrenci/@item.ID" class="btn btn-success">Güncelle</a></td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Ogrenci No</th>
+                                    <th>TC No</th>
+                                    <th>Adı</th>
+                                    <th>Soyadı</th>
+                                    <th>Üniversite</th>
+                                    <th>Fakülte</th>
+                                    <th>Bölüm</th>
+                                    <th>Guncelle</th>
+                                    <th>Sil</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+
+    <!-- /.container-fluid -->
+</section>
+<a href="/OGRENCI/OgrenciEkle/" class="btn btn-primary">Yeni Öğrenci Ekle</a>
+<a href="/OGRENCI/OgrenciList/kemal" class="btn btn-primary">Yeni Öğrenci Ekle</a>

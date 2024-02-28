@@ -1,0 +1,166 @@
+﻿@model IEnumerable<EntityLayer.Concrete.DERSHAREKET>
+@{
+    ViewBag.Title = "GetDersHareket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/login-form-20/css/style.css">
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+    <!-- Main CSS-->
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- /.card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DataTable with default features</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Eklenme Tarihi</th>
+
+                                    <th>ÖĞRENCİ</th>
+                                    <th>DANIŞMAN</th>
+                                    <th>DURUM</th>
+                                    <th>Üniversite</th>
+                                    <th>Ders Ekle</th>
+                                    <th>Üniversite Ekle</th>
+                                    <th>Başvuruyu Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.INSERT_DATE.ToShortDateString()</td>
+                                    <td>@item.Ogrencis.ADI @item.Ogrencis.SOYADI</td>
+                                    <td>@ViewBag.value1</td>
+                                    @if (item.STATE == 0)
+                                    {
+                                        <td>Danışman Onayı Bekleniyor</td>
+
+                                    }
+                                    @if (item.STATE == 2)
+                                    {
+                                        <td>Komisyon Onayı Bekleniyor</td>
+
+                                    }
+                                    @if (item.STATE == 4)
+                                    {
+                                        <td>Onaylandı</td>
+                                    }
+                                    @if (item.STATE == 3)
+                                    {
+                                        <td>Ders Seçilmedi/ Ders Onayı Bekleniyor</td>
+
+                                    }
+                                    @if (!string.IsNullOrEmpty(item.UNIVERSITEADI))
+                                    {
+                                        <td>@item.UNIVERSITEADI</td>
+                                    }
+                                    else
+                                    {
+
+                                        <td>Üniversite seçilmedi</td>
+                                    }
+
+
+                                    <td><a href="/DERSHAREKET/GetDersHareketDetails/@item.ID" class="btn btn-danger">Ders Ekle</a></td>
+                                    @if (string.IsNullOrEmpty(item.UNIVERSITEADI) && item.UNIVERSITESTATE == 1)
+                                    {
+                                        <td><a href="/DERSHAREKET/AddUniversite/@item.ID" class="btn btn-danger">Üniversite Ekle</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                    <td>@Html.ActionLink("Başvuruyu Sil", "DeleteDersHareket", new { ID = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')" })</td>
+
+                                </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Eklenme Tarihi</th>
+                                    <th>ÖĞRENCİ</th>
+                                    <th>DANIŞMAN</th>
+                                    <th>DURUM</th>
+                                    <th>Üniversite</th>
+
+                                    <th>Ders Ekle</th>
+                                    <th>Üniversite Ekle</th>
+                                    <th>Başvuruyu Sil</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+
+    <!-- /.container-fluid -->
+</section>
+
+<a href="/DERSHAREKET/AddDersHareket/" class="btn btn-primary">Kendi Üniversitende Yaz Okulu Başvurusu Yap</a>
+<a href="/DERSHAREKET/AddDersHareketAnotherUnivers/" class="btn btn-primary">Diğer Üniversitelerde Yaz Okulu Başvurusu Yap</a>
+
+
+@*<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Yeni Üniversite Ekle
+</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yeni Üniversite Ekleme Paneli</h2>
+            </div>
+            <form method="post" action="/DEF_TABLE_CRUD/UniversiteEkle/">
+                <div class="modal-body">
+                    <label> Adı</label>
+                    <input type="text" name="ADI" class="form-control" />
+                    <br />
+
+                    <button class="btn btn-primary">Kaydet</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>*@
+@if (ViewBag.Success == false)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                toastr.error("Aynı anda açık sadece 1 yaz okulu başvurunuz olabilir.");
+
+            };
+        </script>
+}
+</body>

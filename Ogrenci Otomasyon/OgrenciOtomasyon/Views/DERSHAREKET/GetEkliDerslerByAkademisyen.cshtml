@@ -1,0 +1,71 @@
+﻿
+@model IEnumerable<EntityLayer.Concrete.DERS>
+
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- /.card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DataTable with default features</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>Adı</th>
+                                    <th>Kredi</th>
+                                    <th>AKTS</th>
+                                    <th>Fakülte</th>
+                                    <th>Bölüm</th>
+                                    @*<th>ÇIKAR</th>*@
+                                    @*<th>Sil</th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ADI</td>
+                                        <td>@item.KREDI</td>
+                                        <td>@item.AKTS</td>
+                                        <td>@item.FAKULTEs.ADI</td>
+
+                                        <td>@item.AKADEMIKPERSONELs.BOLUMs.ADI</td>                                        @*<td>@Html.ActionLink("Sil", "DeleteDers", new { ID = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')" })</td>*@
+                                        @*<td><a href="/DERSHAREKET/DeleteDers?pkid=@ViewBag.value1&&dersid=@item.ID" class="btn btn-danger">ÇIKAR</a></td>*@
+
+
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Adı</th>
+                                    <th>Kredi</th>
+                                    <th>AKTS</th>
+                                    <th>Fakülte</th>
+                                    <th>Bölüm</th>
+                                    @*<th>ÇIKAR</th>*@
+                                    @* <th>Sil</th>*@
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+
+    <!-- /.container-fluid -->
+</section>

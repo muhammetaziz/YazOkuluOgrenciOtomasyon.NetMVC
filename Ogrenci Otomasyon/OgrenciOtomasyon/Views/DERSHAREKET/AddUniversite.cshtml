@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.DERSHAREKET
+
+
+@{
+    ViewBag.Title = "AddUniversite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("AddUniversite", "DERSHAREKET", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
+        <input type="hidden" class="form-control" name="UserId" value="@Model.ID" />
+       
+        @Html.Label("Üniversite")
+        @Html.DropDownListFor(x => x.UNIVERSITEID, (List<SelectListItem>)ViewBag.values1, new { @class = "form-control" })
+        <br />
+       
+
+
+
+        <button class="btn btn-info">Kaydet</button>
+    </form>
+}
+

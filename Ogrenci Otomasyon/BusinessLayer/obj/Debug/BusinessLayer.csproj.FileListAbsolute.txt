@@ -1,0 +1,15 @@
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\obj\Debug\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\bin\Debug\EntityLayer.dll
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\bin\Debug\EntityLayer.pdb
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\bin\Debug\EntityLayer.dll.config
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\kemal\source\repos\Ogrenci Otomasyon\BusinessLayer\obj\Debug\BusinessLayer.pdb

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EntityLayer.Concrete.BOLUM>
+@{
+    ViewBag.Title = "BolumList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- /.card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DataTable with default features</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Adı</th>
+                                    <th>Guncelle</th>
+                                    <th>Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ADI</td>
+                                        <td>@Html.ActionLink("Sil", "DeleteBolum", new { ID = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')" })</td>
+                                        <td><a href="/DEF_TABLE_CRUD/UpdateBolum/@item.ID" class="btn btn-success">Güncelle</a></td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Adı</th>
+                                    <th>Guncelle</th>
+                                    <th>Sil</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+        Yeni Bölüm Ekle
+    </button>
+    <div class="modal" id="Modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Yeni Bölüm Ekleme Paneli</h2>
+                </div>
+                <form method="post" action="/DEF_TABLE_CRUD/BolumEkle/">
+                    <div class="modal-body">
+                        <label> Adı</label>
+                        <input type="text" name="ADI" class="form-control" />
+                        <br />
+
+                        <button class="btn btn-primary">Kaydet</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</section>

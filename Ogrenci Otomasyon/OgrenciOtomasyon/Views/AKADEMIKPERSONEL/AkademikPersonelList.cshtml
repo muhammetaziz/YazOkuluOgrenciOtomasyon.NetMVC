@@ -1,0 +1,94 @@
+﻿@model IEnumerable<EntityLayer.Concrete.AKADEMIKPERSONEL>
+@{
+    ViewBag.Title = "AkademikPersonelList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- /.card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DataTable with default features</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Sicil No</th>
+                                    <th>Adı</th>
+                                    <th>Soyadı</th>
+                                    <th>Ünvan</th>
+                                    <th>Bölüm</th>
+                                    <th>Guncelle</th>
+                                    <th>Komisyona Ekle/Çıkar</th>
+                                    <th>Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+
+                                    <td>@item.SICILNO</td>
+                                    <td>@item.ADI</td>
+                                    <td>@item.SOYADI</td>
+                                    <td>@item.UNVAN</td>
+                                    <td>@item.BOLUMs.ADI</td>
+
+                                    <td><a href="/AKADEMIKPERSONEL/UpdateAkademikPersonel/@item.ID" class="btn btn-success">Güncelle</a></td>
+                                    @if (string.IsNullOrEmpty(item.FOTOGRAFYOL))
+                                    {
+                                        <td><a href="/AKADEMIKPERSONEL/KomisyonaEkle/@item.ID" class="btn btn-warning"> Ekle</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td><a href="/AKADEMIKPERSONEL/KomisyondanCikar/@item.ID" class="btn btn-danger"> Çıkar</a></td>
+                                    }
+
+                                    
+                                    <td>@Html.ActionLink("Sil", "DeleteAkademikPersonel", new { ID = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')" })</td>
+
+                                </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Sicil No</th>
+                                    <th>Adı</th>
+                                    <th>Soyadı</th>
+                                    <th>Ünvan</th>
+                                    <th>Bölüm</th>
+                                    <th>Guncelle</th>
+                                    <th>Komisyona Ekle/Çıkar</th>
+                                    <th>Sil</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+
+    <!-- /.container-fluid -->
+</section>
+<a href="/AKADEMIKPERSONEL/AkademikPersonelEkle/" class="btn btn-primary">Yeni Personel Ekle</a>
+@*<a href="/OGRENCI/OgrenciList/kemal" class="btn btn-primary">Yeni Öğrenci Ekle</a>*@
+
+
